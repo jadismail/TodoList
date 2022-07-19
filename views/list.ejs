@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="../public/css/styles.css" />
+</head>
+
+<body>
+    <div class="box" id="heading">
+        <h1>
+            <%= kindOfDay %>
+        </h1>
+    </div>
+
+    <div class="box">
+        <form class="first-form" action="/" method="post">
+            <input type="text" name="NewTask" placeholder="Enter new task..." autocomplete="off" />
+            <button type="submit" value="<%= kindOfDay %>">+</button>
+        </form>
+        <% newLists.forEach(newList =>{ %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" value="<%= newList._id %>" name="checkbox" onchange="this.form.submit()" />
+                    <p>
+                        <%= newList.name %>
+                    </p>
+                </div>
+            </form>
+            <% }) %>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
